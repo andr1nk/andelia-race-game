@@ -6,9 +6,10 @@ class Game {
   }
 
   setup() {
-    createCanvas(400, 500)
+    var canvas = createCanvas(400, 515)
     frameRate(60)
-    background(230)
+    background(0)
+    canvas.parent('sketch-holder');
 
     this.car.hello()
     this.car.setup()

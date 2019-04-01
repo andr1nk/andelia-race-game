@@ -2,20 +2,21 @@
 
 class Mycar {
   constructor() {
-    this.xpos = 0
-    this.ypos = 0
+    this.xpos = 50
+    this.ypos = 50
   }
 
   setup() {
     this.img = loadImage(
-      "https://www.altitude365.com/wp-content/uploads/2016/04/clip_image001-1.gif"
+      "../assets/bird.png"
     )
   }
 
   draw() {
     fill(0)
-    //ellipse(10, 10, 50, 50)
-    // image(this.img, this.xpos, this.ypos, 100)
+    ellipse(10, 10, 50, 50)
+    //image(this.img, this.xpos, this.ypos, 100, 50)
+    //image(img, this.xpos, this.ypos, 100, 100)
   }
 
   hello() {
