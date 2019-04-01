@@ -5,42 +5,52 @@
 class Game {
   constructor(){
     this.car = new Mycar()
-    this.xposStrip = 195
-    this.yposStrip = 0
-    this.stripDistance = 80
-    this.stripWidth = 10
-    this.stripHeight = 50
+    this.otherCar = new OtherCar()
+    this.xposRoadMark = 195
+    this.yposRoadMark = 0
+    this.RoadMarkDistance = 80
+    this.RoadMarkWidth = 10
+    this.RoadMarkHeight = 50
   }
 
   setup() {
     var canvas = createCanvas(400, 515)
-    frameRate(2)
+    frameRate(60)
     background("#222222")
     canvas.parent('sketch-holder');
 
     this.car.setup()
+    this.otherCar.setup()
   }
 
 
   draw () {
     clear()
 
+    // road color
     background("#222222")
-
-    this.car.draw()
-
-    if (this.yposStrip > this.stripDistance-1) this.yposStrip = 0
+    
+    // road marks
+    if (this.yposRoadMark > this.RoadMarkDistance-1) this.yposRoadMark = 0
 
     fill("#ffffff")
-    this.yposStrip += 5
-    rect(this.xposStrip, this.yposStrip + this.stripDistance * -1, this.stripWidth, this.stripHeight)
-    rect(this.xposStrip, this.yposStrip + this.stripDistance * 0, this.stripWidth, this.stripHeight)
-    rect(this.xposStrip, this.yposStrip + this.stripDistance * 1, this.stripWidth, this.stripHeight)
-    rect(this.xposStrip, this.yposStrip + this.stripDistance * 2, this.stripWidth, this.stripHeight)
-    rect(this.xposStrip, this.yposStrip + this.stripDistance * 3, this.stripWidth, this.stripHeight)
-    rect(this.xposStrip, this.yposStrip + this.stripDistance * 4, this.stripWidth, this.stripHeight)
-    rect(this.xposStrip, this.yposStrip + this.stripDistance * 5, this.stripWidth, this.stripHeight)
-    rect(this.xposStrip, this.yposStrip + this.stripDistance * 6, this.stripWidth, this.stripHeight)
+    this.yposRoadMark += 9
+    rect(this.xposRoadMark, this.yposRoadMark + this.RoadMarkDistance * -1, this.RoadMarkWidth, this.RoadMarkHeight)
+    rect(this.xposRoadMark, this.yposRoadMark + this.RoadMarkDistance * 0, this.RoadMarkWidth, this.RoadMarkHeight)
+    rect(this.xposRoadMark, this.yposRoadMark + this.RoadMarkDistance * 1, this.RoadMarkWidth, this.RoadMarkHeight)
+    rect(this.xposRoadMark, this.yposRoadMark + this.RoadMarkDistance * 2, this.RoadMarkWidth, this.RoadMarkHeight)
+    rect(this.xposRoadMark, this.yposRoadMark + this.RoadMarkDistance * 3, this.RoadMarkWidth, this.RoadMarkHeight)
+    rect(this.xposRoadMark, this.yposRoadMark + this.RoadMarkDistance * 4, this.RoadMarkWidth, this.RoadMarkHeight)
+    rect(this.xposRoadMark, this.yposRoadMark + this.RoadMarkDistance * 5, this.RoadMarkWidth, this.RoadMarkHeight)
+    rect(this.xposRoadMark, this.yposRoadMark + this.RoadMarkDistance * 6, this.RoadMarkWidth, this.RoadMarkHeight)
+
+    //myCar 
+    this.car.draw()
+
+    //otherCar
+    
+    this.otherCar.draw()
+
   }
 
 }

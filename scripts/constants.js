@@ -1,1 +1,8 @@
-const CARWIDTH = 10
+const CARWIDTH = 100 / 2
+const CARHEIGHT = 200 / 2
+
+const OTHERCARWIDTH = 100 / 2
+const OTHERCARHEIGHT = 200/ 2
+
+const ROADWIDTH = 400
+const ROADHEIGHT = 515
