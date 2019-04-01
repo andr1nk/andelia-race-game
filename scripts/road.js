@@ -5,7 +5,8 @@
 class Game {
   constructor(){
     this.car = new Mycar()
-    this.otherCar = new OtherCar()
+    // this.otherCar = new OtherCar()
+    this.otherCars = [new OtherCar()]
     this.xposRoadMark = 195
     this.yposRoadMark = 0
     this.RoadMarkDistance = 80
@@ -14,22 +15,36 @@ class Game {
     this.roadVelocity = 9
   }
 
+
   setup() {
     var canvas = createCanvas(400, 515)
-    frameRate(60)
+    frameRate(10)
     background("#222222")
     canvas.parent('sketch-holder');
 
     this.car.setup()
-    this.otherCar.setup()
+    this.otherCars[0].setup()
+    this.setSpawnInterval()
   }
 
+  setSpawnInterval() {
+    this.spawnInterval = setInterval(
+      function() {
+        this.otherCars.push(new OtherCar())
+        console.log("OtherCar pushed to Array: ")
+        console.log(this.otherCars)
+        if (this.otherCars.length > 5) {
+          console.log("string too long")
+          this.otherCars.slice(1)
+        }
+        }.bind(this), 3000
+    )
+  }
 
   draw () {
     clear()
 
-    // road color
-    background("#222222")
+    background("#222222") // road color
     
     // road marks
     if (this.yposRoadMark > this.RoadMarkDistance-1) this.yposRoadMark = 0
@@ -46,9 +61,8 @@ class Game {
     this.car.draw()
 
     //otherCar
-    
-    this.otherCar.draw()
-
+    this.otherCars[0].draw()
   }
+
 
 }

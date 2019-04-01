@@ -14,7 +14,7 @@ class Mycar {
   }
 
   draw() {
-    console.log("car is drawn")
+    //console.log("car is drawn")
 
     // move car
 
@@ -47,7 +47,5 @@ class Mycar {
 
       if (this.yposCar <= 0 ) this.yposCar = 0
       if (this.yposCar >= ROADHEIGHT-CARHEIGHT) this.yposCar = ROADHEIGHT-CARHEIGHT
-    
-    console.log("car reached site, xpos is" + this.xposCar + " --- " ) 
   }
 }
