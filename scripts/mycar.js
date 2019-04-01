@@ -9,16 +9,17 @@ class Mycar {
   setup() {
     this.img = loadImage(
       "https://raw.githubusercontent.com/remylenoir/w2d5/master/assets/bird.png"
+
     )
   }
 
   draw() {
-    fill("red")
+    //clear()
     console.log("draw car")
-    rect(this.xposCar, this.yposCar, 30, 50)
-    //image(this.img, this.xpos, this.ypos, this.img.width / 10, this.img.height / 10)
+    fill("red")
+    ellipse(this.xposCar, this.yposCar, 30, 50)
+    image(this.img, this.xposCar, this.yposCar, this.img.width / 10, this.img.height / 10)
     //image(img, this.xpos, this.ypos, 100, 100)
   }
-
 
 }
