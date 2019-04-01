@@ -11,6 +11,7 @@ class Game {
     this.RoadMarkDistance = 80
     this.RoadMarkWidth = 10
     this.RoadMarkHeight = 50
+    this.roadVelocity = 9
   }
 
   setup() {
@@ -32,17 +33,14 @@ class Game {
     
     // road marks
     if (this.yposRoadMark > this.RoadMarkDistance-1) this.yposRoadMark = 0
-
+    
     fill("#ffffff")
-    this.yposRoadMark += 9
-    rect(this.xposRoadMark, this.yposRoadMark + this.RoadMarkDistance * -1, this.RoadMarkWidth, this.RoadMarkHeight)
-    rect(this.xposRoadMark, this.yposRoadMark + this.RoadMarkDistance * 0, this.RoadMarkWidth, this.RoadMarkHeight)
-    rect(this.xposRoadMark, this.yposRoadMark + this.RoadMarkDistance * 1, this.RoadMarkWidth, this.RoadMarkHeight)
-    rect(this.xposRoadMark, this.yposRoadMark + this.RoadMarkDistance * 2, this.RoadMarkWidth, this.RoadMarkHeight)
-    rect(this.xposRoadMark, this.yposRoadMark + this.RoadMarkDistance * 3, this.RoadMarkWidth, this.RoadMarkHeight)
-    rect(this.xposRoadMark, this.yposRoadMark + this.RoadMarkDistance * 4, this.RoadMarkWidth, this.RoadMarkHeight)
-    rect(this.xposRoadMark, this.yposRoadMark + this.RoadMarkDistance * 5, this.RoadMarkWidth, this.RoadMarkHeight)
-    rect(this.xposRoadMark, this.yposRoadMark + this.RoadMarkDistance * 6, this.RoadMarkWidth, this.RoadMarkHeight)
+
+    this.yposRoadMark += this.roadVelocity
+    for (let i = -1; i < 7; i++) {
+      rect(this.xposRoadMark, this.yposRoadMark + this.RoadMarkDistance * i, this.RoadMarkWidth, this.RoadMarkHeight)
+    }
+
 
     //myCar 
     this.car.draw()
