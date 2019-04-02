@@ -6,12 +6,12 @@ class Game {
   constructor(){
     this.car = new Mycar()
     this.otherCars = []
-    this.xposRoadMark = 195
+    this.xposRoadMark = 130
     this.yposRoadMark = 0
-    this.RoadMarkDistance = 80
+    this.RoadMarkDistance = 120
     this.RoadMarkWidth = 10
     this.RoadMarkHeight = 50
-    this.roadVelocity = 9
+    this.roadVelocity = 12
   }
 
   
@@ -58,6 +58,7 @@ class Game {
     this.yposRoadMark += this.roadVelocity
     for (let i = -1; i < 7; i++) {
       rect(this.xposRoadMark, this.yposRoadMark + this.RoadMarkDistance * i, this.RoadMarkWidth, this.RoadMarkHeight)
+      rect(this.xposRoadMark + 130, this.yposRoadMark + this.RoadMarkDistance * i, this.RoadMarkWidth, this.RoadMarkHeight)
     }
 
 

@@ -2,7 +2,7 @@
 
 class PoliceCar {
   constructor() {
-    this.xposOtherCar = ROADWIDTH * 1/4 - OTHERCARWIDTH / 2
+    this.xposOtherCar = ROADWIDTH * 1/6 - OTHERCARWIDTH / 2
     this.yposOtherCar = -OTHERCARHEIGHT
     this.velocityOtherCar = 2
   }
@@ -46,7 +46,7 @@ class PoliceCar {
 
 class Tank {
   constructor() {
-    this.xposOtherCar = ROADWIDTH * 3/4
+    this.xposOtherCar = ROADWIDTH * 5/6 - OTHERCARWIDTH / 2
     this.yposOtherCar = -OTHERCARHEIGHT
     this.velocityOtherCar = 5
   }
