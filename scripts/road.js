@@ -29,18 +29,29 @@ class Game {
   setSpawnInterval() {
     this.spawnInterval = setInterval(
       function() {
-        if (Math.random() > 0.5) {
+        let carPushRandomizer = Math.random()
+        if (carPushRandomizer < 0.2) {
           this.otherCars.push(new PoliceCar())
           //console.log("POLICE pushed to other cars Array")
-        } else {
+        } else if (carPushRandomizer >= 0.2 && carPushRandomizer < 0.4){
+          this.otherCars.push(new CarLaneTwo())
+          //console.log("Lane 2 Car pushed to other cars Array")
+        } else if (carPushRandomizer >= 0.4 && carPushRandomizer < 0.6){
           this.otherCars.push(new Tank())
           //console.log("TANK pushed to other cars Array")
+        } else if (carPushRandomizer >= 0.6 && carPushRandomizer < 0.8){
+          this.otherCars.push(new BikeLeft())
+          //console.log("BIKE pushed to other cars Array")
+        } else {
+          this.otherCars.push(new BikeRight())
+          //console.log("BIKE pushed to other cars Array")
         }
+
         this.otherCars.forEach(car=> car.setup())
-        if (this.otherCars.length > 6) {
+        if (this.otherCars.length > 10) {
           this.otherCars.splice(1,1)
         }
-      }.bind(this), 2000
+      }.bind(this), 1500
       )
     }
 

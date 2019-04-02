@@ -55,7 +55,7 @@ class Mycar {
         left: this.xposCar,
         right: this.xposCar + CARWIDTH,
         top: this.yposCar,
-        bottom: this.ypos + CARHEIGHT,
+        bottom: this.yposCar + CARHEIGHT,
     }
 }
 }
