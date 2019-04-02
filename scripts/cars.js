@@ -29,6 +29,7 @@ class PoliceCar {
 
     if (intersectRect(policeCarRect, game.car.myCarRect)) {
         console.log("Collision with POLICE!!")
+        game.over()
     }
 
     function intersectRect(r1, r2) {

@@ -4,17 +4,22 @@
 
 class Game {
   constructor(){
+    //cars
     this.car = new Mycar()
     this.otherCars = []
+
+    //road
     this.xposRoadMark = 130
     this.yposRoadMark = 0
     this.RoadMarkDistance = 120
     this.RoadMarkWidth = 10
     this.RoadMarkHeight = 50
     this.roadVelocity = 12
+
+    // game over
+    this.gameOver = false
   }
 
-  
   setup() {
     var canvas = createCanvas(400, 515)
     frameRate(60)
@@ -59,11 +64,11 @@ class Game {
   draw() {
     clear()
 
-    background("#222222") // road color
+    // road color
+    background("#222222") 
 
     // road marks
     if (this.yposRoadMark > this.RoadMarkDistance - 1) this.yposRoadMark = 0
-
     fill("#ffffff")
 
     this.yposRoadMark += this.roadVelocity
@@ -72,17 +77,27 @@ class Game {
       rect(this.xposRoadMark + 130, this.yposRoadMark + this.RoadMarkDistance * i, this.RoadMarkWidth, this.RoadMarkHeight)
     }
 
+    //game over condition
+    if (this.gameOver) {
+      textSize(60)
+      fill ("red")
+      textFont("Arial")
+      textAlign(CENTER)
+      text('Game Over', ROADWIDTH / 2, ROADHEIGHT/2)
+    } else {
+      //myCar
+      this.car.draw();
 
-    //myCar 
-    this.car.draw()
-
-    //otherCars
-    this.otherCars.forEach(car => {
-      car.draw()
-      car.checkCollision()
-    })
-
+      //otherCars
+      this.otherCars.forEach(car => {
+        car.draw();
+        car.checkCollision();
+      });
+    }
   }
 
-
+  over() {
+    this.gameOver = true
+    // clearInterval(this.scoreInterval)
+  }
 }
