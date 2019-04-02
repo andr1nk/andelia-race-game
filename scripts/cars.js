@@ -72,6 +72,7 @@ class CarLaneTwo {
 
     if (intersectRect(carLaneTwoRect, game.car.myCarRect)) {
         console.log("Collision with Limo!!")
+        game.over()
     }
 
     function intersectRect(r1, r2) {
@@ -116,6 +117,7 @@ class Tank {
 
     if (intersectRect(tankRect, game.car.myCarRect)) {
         console.log("Collision with TANK!!")
+        game.over()
     }
 
     function intersectRect(r1, r2) {
@@ -158,6 +160,7 @@ class BikeLeft {
 
     if (intersectRect(bikeRect, game.car.myCarRect)) {
         console.log("Collision with Bike!!")
+        game.over()
     }
 
     function intersectRect(r1, r2) {
@@ -199,6 +202,7 @@ class BikeRight {
 
     if (intersectRect(bikeRect, game.car.myCarRect)) {
         console.log("Collision with Bike!!")
+        game.over()
     }
 
     function intersectRect(r1, r2) {
