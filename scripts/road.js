@@ -31,10 +31,10 @@ class Game {
       function() {
         if (Math.random() > 0.5) {
           this.otherCars.push(new PoliceCar())
-          console.log("POLICE pushed to other cars Array")
+          //console.log("POLICE pushed to other cars Array")
         } else {
           this.otherCars.push(new Tank())
-          console.log("TANK pushed to other cars Array")
+          //console.log("TANK pushed to other cars Array")
         }
         this.otherCars.forEach(car=> car.setup())
         if (this.otherCars.length > 6) {
@@ -65,7 +65,10 @@ class Game {
     this.car.draw()
 
     //otherCars
-    this.otherCars.forEach(car => car.draw())
+    this.otherCars.forEach(car => {
+      car.draw()
+      car.checkCollision()
+    })
 
   }
 

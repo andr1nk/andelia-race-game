@@ -47,5 +47,15 @@ class Mycar {
 
       if (this.yposCar <= 0 ) this.yposCar = 0
       if (this.yposCar >= ROADHEIGHT-CARHEIGHT) this.yposCar = ROADHEIGHT-CARHEIGHT
+      this.setRect()
   }
+
+  setRect() {
+    this.myCarRect = {
+        left: this.xposCar,
+        right: this.xposCar + CARWIDTH,
+        top: this.yposCar,
+        bottom: this.ypos + CARHEIGHT,
+    }
+}
 }

@@ -14,11 +14,35 @@ class PoliceCar {
   }
 
   draw(){
-    console.log("police car is drawn")
+    //console.log("police car is drawn")
     this.yposOtherCar += this.velocityOtherCar
     image(this.policeCarImg, this.xposOtherCar, this.yposOtherCar, OTHERCARWIDTH, OTHERCARHEIGHT)
   }
+  
+  checkCollision() {
+    const policeCarRect = {
+        left: this.xposOtherCar,
+        right: this.xposOtherCar + OTHERCARWIDTH,
+        top: this.yposOtherCar,
+        bottom: this.yposOtherCar + OTHERCARHEIGHT,
+    }
+
+    if (intersectRect(policeCarRect, game.car.myCarRect)) {
+        console.log("Collision with POLICE!!")
+    }
+
+    function intersectRect(r1, r2) {
+      return !(
+        r2.left > r1.right ||
+        r2.right < r1.left ||
+        r2.top > r1.bottom ||
+        r2.bottom < r1.top
+    )
+    }
+  }
+  
 }
+
 
 class Tank {
   constructor() {
@@ -34,8 +58,30 @@ class Tank {
   }
 
   draw(){
-    console.log("tank is drawn")
+    //console.log("tank is drawn")
     this.yposOtherCar += this.velocityOtherCar
     image(this.tankImg, this.xposOtherCar, this.yposOtherCar, OTHERCARWIDTH, OTHERCARHEIGHT)
+  }
+
+  checkCollision() {
+    const tankRect = {
+        left: this.xposOtherCar,
+        right: this.xposOtherCar + OTHERCARWIDTH,
+        top: this.yposOtherCar,
+        bottom: this.yposOtherCar + OTHERCARHEIGHT,
+    }
+
+    if (intersectRect(tankRect, game.car.myCarRect)) {
+        console.log("Collision with TANK!!")
+    }
+
+    function intersectRect(r1, r2) {
+        return !(
+            r2.left > r1.right ||
+            r2.right < r1.left ||
+            r2.top > r1.bottom ||
+            r2.bottom < r1.top
+        )
+    }
   }
 }
