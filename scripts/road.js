@@ -5,8 +5,7 @@
 class Game {
   constructor(){
     this.car = new Mycar()
-    this.otherCarsLeft = []
-    this.otherCarsRight = []
+    this.otherCars = []
     this.xposRoadMark = 195
     this.yposRoadMark = 0
     this.RoadMarkDistance = 80
@@ -24,39 +23,27 @@ class Game {
     
     this.car.setup()
     
-    this.setSpawnIntervalLeft()
-    this.setSpawnIntervalRight()
+    this.setSpawnInterval()
   }
   
-  setSpawnIntervalLeft() {
-    this.spawnIntervalLeft = setInterval(
+  setSpawnInterval() {
+    this.spawnInterval = setInterval(
       function() {
-        this.otherCarsLeft.push(new PoliceCar())
-        this.otherCarsLeft.forEach(car=> car.setup())
-        console.log("OtherCar pushed to Array: ")
-        console.log(this.otherCarsLeft)
-        if (this.otherCarsLeft.length > 3) {
-          console.log("string too long")
-          this.otherCarsLeft.splice(1,1)
+        if (Math.random() > 0.5) {
+          this.otherCars.push(new PoliceCar())
+          console.log("POLICE pushed to other cars Array")
+        } else {
+          this.otherCars.push(new Tank())
+          console.log("TANK pushed to other cars Array")
         }
-      }.bind(this), 5000
+        this.otherCars.forEach(car=> car.setup())
+        if (this.otherCars.length > 6) {
+          this.otherCars.splice(1,1)
+        }
+      }.bind(this), 2000
       )
     }
 
-  setSpawnIntervalRight() {
-    this.spawnIntervalRight = setInterval(
-      function() {
-        this.otherCarsRight.push(new Tank())
-        this.otherCarsRight.forEach(car=> car.setup())
-        console.log("OtherCar pushed to Array: ")
-        console.log(this.otherCarsRight)
-        if (this.otherCarsRight.length > 6) {
-          console.log("string too long")
-          this.otherCarsRight.splice(1,1)
-        }
-      }.bind(this), 3000
-      )
-    }
     
   draw() {
     clear()
@@ -77,11 +64,8 @@ class Game {
     //myCar 
     this.car.draw()
 
-    //otherCars Left Lane
-    this.otherCarsLeft.forEach(car => car.draw())
-
-    //otherCars Right Lane
-    this.otherCarsRight.forEach(car => car.draw())
+    //otherCars
+    this.otherCars.forEach(car => car.draw())
 
   }
 
