@@ -17,10 +17,11 @@ class Game {
     this.roadVelocity = 12
 
     // game over
-    this.gameOver = false
+    this.youLost = false
+    this.youWon = false
 
     //scoreboard
-    this.distanceToStuggi = 300
+    this.distanceToStuggi = 20
   }
 
   setup() {
@@ -67,11 +68,14 @@ class Game {
 
   setScoreInterval() {
     this.scoreInterval = setInterval(
-        function() {
-            this.distanceToStuggi--
-            document.getElementById('distanceLeftToStuggi').innerHTML = `${this.distanceToStuggi} km!`
-        }.bind(this),
-        1000
+      function () {
+        if (this.distanceToStuggi <= 0) {
+          this.won()
+        }
+        this.distanceToStuggi--
+        document.getElementById('distanceLeftToStuggi').innerHTML = `${this.distanceToStuggi} km!`
+      }.bind(this),
+      1000
     )
   }
 
@@ -92,16 +96,23 @@ class Game {
     }
 
     //game over condition
-    if (this.gameOver) {
-      textSize(60)
+    if (this.youLost) {
+      textSize(40)
       fill("red")
       textFont("Arial")
       textAlign(CENTER)
-      text('Game Over', ROADWIDTH / 2, ROADHEIGHT / 2)
+      text("You Crashed, silly!", ROADWIDTH / 2, ROADHEIGHT / 2 + 40)
+      text("Game Over", ROADWIDTH / 2, ROADHEIGHT / 2)
+    } else if (this.youWon) {
+      textSize(40)
+      fill("red")
+      textFont("Arial")
+      textAlign(CENTER)
+      text("You made it to Stuggi", ROADWIDTH / 2, ROADHEIGHT / 2 + 40)
+      text("You Great Hecht, you alder!", ROADWIDTH / 2, ROADHEIGHT / 2)
     } else {
       //myCar
       this.car.draw();
-
       //otherCars
       this.otherCars.forEach(car => {
         car.draw();
@@ -110,8 +121,14 @@ class Game {
     }
   }
 
-  over() {
-    this.gameOver = true
+  lost() {
+    console.log("Lost")
+    this.youLost = true
+    clearInterval(this.scoreInterval)
+  }
+
+  won() {
+    this.youWon = true
     clearInterval(this.scoreInterval)
   }
 }
