@@ -14,7 +14,7 @@ class OtherCar {
   }
 
   draw(){
-    //console.log("police car is drawn")
+    console.log("police car is drawn")
     this.yposOtherCar += this.velocityOtherCar
     image(this.policeCarImg, this.xposOtherCar, this.yposOtherCar, OTHERCARWIDTH, OTHERCARHEIGHT)
   }
