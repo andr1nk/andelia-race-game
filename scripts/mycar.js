@@ -2,7 +2,7 @@
 
 class Mycar {
   constructor() {
-    this.xposCar = ROADWIDTH / 2 - CARWIDTH / 2
+    this.xposCar = ROADLEFTBORDER + ROADWIDTH / 2 - CARWIDTH / 2
     this.yposCar = ROADHEIGHT-CARHEIGHT - 50
     this.myCarVelocity = 5
   }

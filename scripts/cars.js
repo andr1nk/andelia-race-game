@@ -2,7 +2,7 @@
 
 class PoliceCar {
   constructor() {
-    this.xposOtherCar = ROADWIDTH * 1/6 - OTHERCARWIDTH / 2
+    this.xposOtherCar = ROADLEFTBORDER + ROADWIDTH * 1/6 - OTHERCARWIDTH / 2
     this.yposOtherCar = -OTHERCARHEIGHT
     this.velocityOtherCar = 4
   }
@@ -46,7 +46,7 @@ class PoliceCar {
 
 class CarLaneTwo {
   constructor() {
-    this.xposOtherCar = ROADWIDTH * 3/6 - OTHERCARWIDTH / 2
+    this.xposOtherCar = ROADLEFTBORDER + ROADWIDTH * 3/6 - OTHERCARWIDTH / 2
     this.yposOtherCar = -OTHERCARHEIGHTLONG
     this.velocityOtherCar = 8
   }
@@ -90,7 +90,7 @@ class CarLaneTwo {
 
 class Tank {
   constructor() {
-    this.xposOtherCar = ROADWIDTH * 5/6 - OTHERCARWIDTH / 2
+    this.xposOtherCar = ROADLEFTBORDER + ROADWIDTH * 5/6 - OTHERCARWIDTH / 2
     this.yposOtherCar = -OTHERCARHEIGHT
     this.velocityOtherCar = 5
   }
@@ -133,7 +133,7 @@ class Tank {
 
 class BikeLeft {
   constructor() {
-    this.xposOtherCar = ROADWIDTH * 2/6 - BIKEWIDTH / 2
+    this.xposOtherCar = ROADLEFTBORDER + ROADWIDTH * 2/6 - BIKEWIDTH / 2
     this.yposOtherCar = ROADHEIGHT + BIKEHEIGHT
     this.velocityOtherCar = -10
   }
@@ -175,7 +175,7 @@ class BikeLeft {
 }
 class BikeRight {
   constructor() {
-    this.xposOtherCar = ROADWIDTH * 4/6 - BIKEWIDTH / 2
+    this.xposOtherCar = ROADLEFTBORDER + ROADWIDTH * 4/6 - BIKEWIDTH / 2
     this.yposOtherCar = ROADHEIGHT + BIKEHEIGHT
     this.velocityOtherCar = -15
   }

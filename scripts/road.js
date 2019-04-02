@@ -1,44 +1,45 @@
 /* eslint-disable */
 
-
-
 class Game {
   constructor() {
     //cars
-    this.car = new Mycar()
-    this.otherCars = []
+    this.car = new Mycar();
+    this.otherCars = [];
 
     //road
-    this.xposRoadMark = 130
-    this.yposRoadMark = 0
-    this.RoadMarkDistance = 120
-    this.RoadMarkWidth = 10
-    this.RoadMarkHeight = 50
-    this.roadVelocity = 12
+    this.xposRoadMark = ROADLEFTBORDER + 130;
+    this.yposRoadMark = 0;
+    this.RoadMarkDistance = 120;
+    this.RoadMarkWidth = 10;
+    this.RoadMarkHeight = 50;
+    this.roadVelocity = 12;
+
+    //road side
+    this.sideObjects = []
 
     // game over
-    this.youLost = false
-    this.youWon = false
+    this.youLost = false;
+    this.youWon = false;
 
     //scoreboard
-    this.distanceToStuggi = 20
+    this.distanceToStuggi = 20;
   }
 
   setup() {
-    var canvas = createCanvas(400, 515)
-    frameRate(60)
-    background("#222222")
-    canvas.parent('sketch-holder');
+    var canvas = createCanvas(CANVASWIDTH, CANVASHEIGHT);
+    frameRate(60);
+    background("#222222");
+    canvas.parent("sketch-holder");
 
-    this.car.setup()
+    this.car.setup();
 
-    this.setSpawnInterval()
-    this.setScoreInterval()
+    this.setSpawnInterval();
+    this.setScoreInterval();
   }
 
   setSpawnInterval() {
     this.spawnInterval = setInterval(
-      function () {
+      function() {
         let carPushRandomizer = Math.random();
         if (carPushRandomizer < 0.2) {
           this.otherCars.push(new PoliceCar());
@@ -68,48 +69,69 @@ class Game {
 
   setScoreInterval() {
     this.scoreInterval = setInterval(
-      function () {
-        if (this.distanceToStuggi <= 0) {
-          this.won()
+      function() {
+        this.distanceToStuggi--;
+        if (this.distanceToStuggi == 0) {
+          this.won();
         }
-        this.distanceToStuggi--
-        document.getElementById('distanceLeftToStuggi').innerHTML = `${this.distanceToStuggi} km!`
+        document.getElementById("distanceLeftToStuggi").innerHTML = `${
+          this.distanceToStuggi
+        } km`;
       }.bind(this),
       1000
-    )
+    );
   }
 
   draw() {
-    clear()
-
+    clear();
+    
     // road color
-    background("#222222")
+    background("#222222");
 
     // road marks
-    if (this.yposRoadMark > this.RoadMarkDistance - 1) this.yposRoadMark = 0
-    fill("#ffffff")
+    if (this.yposRoadMark > this.RoadMarkDistance - 1) this.yposRoadMark = 0;
+    fill("#ffffff");
 
-    this.yposRoadMark += this.roadVelocity
+    this.yposRoadMark += this.roadVelocity;
     for (let i = -1; i < 7; i++) {
-      rect(this.xposRoadMark, this.yposRoadMark + this.RoadMarkDistance * i, this.RoadMarkWidth, this.RoadMarkHeight)
-      rect(this.xposRoadMark + 130, this.yposRoadMark + this.RoadMarkDistance * i, this.RoadMarkWidth, this.RoadMarkHeight)
+      rect(
+        this.xposRoadMark,
+        this.yposRoadMark + this.RoadMarkDistance * i,
+        this.RoadMarkWidth,
+        this.RoadMarkHeight
+      );
+      rect(
+        this.xposRoadMark + 130,
+        this.yposRoadMark + this.RoadMarkDistance * i,
+        this.RoadMarkWidth,
+        this.RoadMarkHeight
+      );
     }
+
+    // left side
+    fill("green")
+    rect(-1, -1, ROADLEFTBORDER, ROADHEIGHT+1)
+
+
+    // right side
+    fill("green")
+    rect(ROADLEFTBORDER+ROADWIDTH-1, -1, CANVASWIDTH-ROADLEFTBORDER-ROADWIDTH+1, ROADHEIGHT+1)
 
     //game over condition
     if (this.youLost) {
-      textSize(40)
-      fill("red")
-      textFont("Arial")
-      textAlign(CENTER)
-      text("You Crashed, silly!", ROADWIDTH / 2, ROADHEIGHT / 2 + 40)
-      text("Game Over", ROADWIDTH / 2, ROADHEIGHT / 2)
+      textSize(40);
+      fill("red");
+      textFont("Arial");
+      textAlign(CENTER);
+      text("You Crashed, silly!", ROADLEFTBORDER + ROADWIDTH / 2, ROADHEIGHT / 2 - 40);
+      text("Game Over", ROADLEFTBORDER + ROADWIDTH / 2, ROADHEIGHT / 2);
     } else if (this.youWon) {
-      textSize(40)
-      fill("red")
-      textFont("Arial")
-      textAlign(CENTER)
-      text("You made it to Stuggi", ROADWIDTH / 2, ROADHEIGHT / 2 + 40)
-      text("You Great Hecht, you alder!", ROADWIDTH / 2, ROADHEIGHT / 2)
+      textSize(40);
+      fill("red");
+      textFont("Arial");
+      textAlign(CENTER);
+      text("You made it to Stuggi", ROADLEFTBORDER + ROADWIDTH / 2, ROADHEIGHT / 2 - 40);
+      text("You Toller Hecht, you!", ROADLEFTBORDER + ROADWIDTH / 2, ROADHEIGHT / 2);
     } else {
       //myCar
       this.car.draw();
@@ -122,13 +144,13 @@ class Game {
   }
 
   lost() {
-    console.log("Lost")
-    this.youLost = true
-    clearInterval(this.scoreInterval)
+    console.log("Lost");
+    this.youLost = true;
+    clearInterval(this.scoreInterval);
   }
 
   won() {
-    this.youWon = true
-    clearInterval(this.scoreInterval)
+    this.youWon = true;
+    clearInterval(this.scoreInterval);
   }
 }
