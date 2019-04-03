@@ -5,6 +5,7 @@ class Mycar {
     this.xposCar = ROADLEFTBORDER + ROADWIDTH / 2 - CARWIDTH / 2
     this.yposCar = ROADHEIGHT-CARHEIGHT - 50
     this.myCarVelocity = 5
+    this.honkTrue = false
   }
 
   setup() {
@@ -12,7 +13,7 @@ class Mycar {
       "../assets/car.png"
     )
 
-    this.honk = new Audio("../assets/Cartoon - Honk.mp3")
+    this.honk = new Audio("../assets/huh.mp3")
 
   }
   
@@ -23,6 +24,9 @@ class Mycar {
     //honk
     if (keyIsDown(65)) {
       this.honk.play()
+      this.honkTrue = true
+    } else {
+      this.honkTrue = false
     }
 
     // move car

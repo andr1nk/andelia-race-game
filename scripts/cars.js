@@ -135,7 +135,7 @@ class BikeLeft {
   constructor() {
     this.xposOtherCar = ROADLEFTBORDER + ROADWIDTH * 2/6 - BIKEWIDTH / 2
     this.yposOtherCar = ROADHEIGHT + BIKEHEIGHT
-    this.velocityOtherCar = -10
+    this.velocityOtherCar = -15
   }
   
   setup(){
@@ -177,7 +177,7 @@ class BikeRight {
   constructor() {
     this.xposOtherCar = ROADLEFTBORDER + ROADWIDTH * 4/6 - BIKEWIDTH / 2
     this.yposOtherCar = ROADHEIGHT + BIKEHEIGHT
-    this.velocityOtherCar = -15
+    this.velocityOtherCar = -10
   }
   
   setup(){

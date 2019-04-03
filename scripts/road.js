@@ -12,7 +12,7 @@ class Game {
     this.RoadMarkDistance = 120;
     this.RoadMarkWidth = 10;
     this.RoadMarkHeight = 50;
-    this.roadVelocity = 12;
+    this.roadVelocity = 10;
 
     //road side
 
@@ -25,6 +25,9 @@ class Game {
 
     //scoreboard
     this.distanceToStuggi = 100;
+
+    this.thereIsLama = false;
+    this.lamaScore = 0;
   }
 
   setup() {
@@ -45,8 +48,8 @@ class Game {
     this.spawnIntervalCars = setInterval(
       function() {
         let carPushRandomizer = Math.random();
-        if (carPushRandomizer < 0.2) {
-          this.otherCars.push(new PoliceCar());
+                  if (carPushRandomizer < 0.2) {
+this.otherCars.push(new PoliceCar());
           //console.log("POLICE pushed to other cars Array")
         } else if (carPushRandomizer >= 0.2 && carPushRandomizer < 0.4) {
           this.otherCars.push(new CarLaneTwo());
@@ -79,10 +82,10 @@ class Game {
           this.sideObjects.push(new SideObject2());
         } else if (objectPushRandomizer >= 0.4 && objectPushRandomizer < 0.6) {
           this.sideObjects.push(new SideObject3());
-        } else if (objectPushRandomizer >= 0.6 && objectPushRandomizer < 0.8) {
+        } else if (objectPushRandomizer >= 0.6 && objectPushRandomizer < 0.95) {
           this.sideObjects.push(new SideObject4());
         } else {
-          this.sideObjects.push(new SideObject3());
+          this.sideObjects.push(new SideObject5());
         }
 
         this.sideObjects.forEach(sideObject => sideObject.setup());
@@ -108,8 +111,9 @@ class Game {
   }
 
   draw() {
-    console.log("Car Array length is: " + this.otherCars.length)
-    console.log("Object Array length is: " + this.sideObjects.length)
+    // console.log("Car Array length is: " + this.otherCars.length)
+    // console.log("Object Array length is: " + this.sideObjects.length)
+    // console.log("Is there a Lama in the Object Array? " + this.thereIsLama)
     clear();
     
     // road color
@@ -143,10 +147,16 @@ class Game {
     fill("green")
     rect(ROADLEFTBORDER + ROADWIDTH-1, -1, CANVASWIDTH-ROADLEFTBORDER-ROADWIDTH+1, ROADHEIGHT+1)
 
-    this.sideObjects.forEach(sideObject => {
-      sideObject.draw();
-    });
+    // draw sideobject
+    this.sideObjects.forEach(sideObject => sideObject.draw())
 
+    // check if there is lama on the side
+    if ((this.sideObjects.filter(sideObject => sideObject.lama).length > 0)) {
+      this.thereIsLama = true
+    } else {
+      this.thereIsLama = false
+    }
+    
 
     //game over condition
     if (this.youLost) {
@@ -171,8 +181,24 @@ class Game {
         car.draw();
         car.checkCollision();
       });
+
+      // lamascore
+      if (this.thereIsLama === true && this.car.honkTrue === true) {
+        this.lamaScore += 1
+      } else if (this.thereIsLama === false && this.car.honkTrue === true) {
+        this.lamaScore -= 1
+      } else {
+        this.lamaScore += 0
+      }
+      console.log(this.thereIsLama)
+      console.log(this.car.honkTrue)
+      document.getElementById("lama-score").innerHTML = `${
+        this.lamaScore
+      } Lama <3`;
     }
   }
+
+  
 
   lost() {
     this.youLost = true;
