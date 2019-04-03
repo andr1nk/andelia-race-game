@@ -63,9 +63,7 @@ class Game {
         }
 
         this.otherCars.forEach(car => car.setup());
-        if (this.otherCars.length > 10) {
-          this.otherCars.splice(1, 1);
-        }
+        this.otherCars = this.otherCars.filter(car => (car.yposOtherCar >= -OTHERCARHEIGHTLONG) && (car.yposOtherCar <= ROADHEIGHT + OTHERCARHEIGHTLONG) )
       }.bind(this),
       1500
     );
@@ -112,7 +110,7 @@ class Game {
   }
 
   draw() {
-    console.log("draw is called")
+    console.log(this.otherCars.length)
     clear();
     
     // road color
