@@ -86,9 +86,7 @@ class Game {
         }
 
         this.sideObjects.forEach(sideObject => sideObject.setup());
-        if (this.sideObjects.length > 15) {
-          this.sideObjects.splice(1, 1);
-        }
+        this.sideObjects = this.sideObjects.filter(object => (object.yposObjLeft <= ROADHEIGHT))
       }.bind(this),
       500
     );
@@ -110,7 +108,8 @@ class Game {
   }
 
   draw() {
-    console.log(this.otherCars.length)
+    console.log("Car Array length is: " + this.otherCars.length)
+    console.log("Object Array length is: " + this.sideObjects.length)
     clear();
     
     // road color
@@ -176,7 +175,6 @@ class Game {
   }
 
   lost() {
-    console.log("Lost");
     this.youLost = true;
     clearInterval(this.scoreInterval);
   }
