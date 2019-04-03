@@ -15,7 +15,10 @@ class Game {
     this.roadVelocity = 12;
 
     //road side
-    this.sideObjects = []
+    // this.sideObject = new SideObject1();
+
+    this.sideObjects = [];
+    this.sideObject = new SideObject1();
 
     // game over
     this.youLost = false;
@@ -33,12 +36,13 @@ class Game {
 
     this.car.setup();
 
-    this.setSpawnInterval();
+    this.setSpawnIntervalCars();
+    this.setSpawnIntervalObjects();
     this.setScoreInterval();
   }
 
-  setSpawnInterval() {
-    this.spawnInterval = setInterval(
+  setSpawnIntervalCars() {
+    this.spawnIntervalCars = setInterval(
       function() {
         let carPushRandomizer = Math.random();
         if (carPushRandomizer < 0.2) {
@@ -64,6 +68,31 @@ class Game {
         }
       }.bind(this),
       1500
+    );
+  }
+
+  setSpawnIntervalObjects() {
+    this.spawnIntervalObjects = setInterval(
+      function() {
+        let objectPushRandomizer = Math.random();
+        if (objectPushRandomizer < 0.2) {
+          this.sideObjects.push(new SideObject1());
+        } else if (objectPushRandomizer >= 0.2 && objectPushRandomizer < 0.4) {
+          this.sideObjects.push(new SideObject2());
+        } else if (objectPushRandomizer >= 0.4 && objectPushRandomizer < 0.6) {
+          this.sideObjects.push(new SideObject3());
+        } else if (objectPushRandomizer >= 0.6 && objectPushRandomizer < 0.8) {
+          this.sideObjects.push(new SideObject4());
+        } else {
+          this.sideObjects.push(new SideObject3());
+        }
+
+        this.sideObjects.forEach(sideObject => sideObject.setup());
+        if (this.sideObjects.length > 15) {
+          this.sideObjects.splice(1, 1);
+        }
+      }.bind(this),
+      500
     );
   }
 
@@ -112,10 +141,14 @@ class Game {
     fill("green")
     rect(-1, -1, ROADLEFTBORDER, ROADHEIGHT+1)
 
-
     // right side
     fill("green")
-    rect(ROADLEFTBORDER+ROADWIDTH-1, -1, CANVASWIDTH-ROADLEFTBORDER-ROADWIDTH+1, ROADHEIGHT+1)
+    rect(ROADLEFTBORDER + ROADWIDTH-1, -1, CANVASWIDTH-ROADLEFTBORDER-ROADWIDTH+1, ROADHEIGHT+1)
+
+    this.sideObjects.forEach(sideObject => {
+      sideObject.draw();
+    });
+
 
     //game over condition
     if (this.youLost) {

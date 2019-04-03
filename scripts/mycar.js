@@ -42,8 +42,8 @@ class Mycar {
       
     
     // Avoid that car goes over border
-      if (this.xposCar <= 0 ) this.xposCar = 0
-      if (this.xposCar >= ROADWIDTH-CARWIDTH) this.xposCar = ROADWIDTH-CARWIDTH
+      if (this.xposCar <= ROADLEFTBORDER) this.xposCar = ROADLEFTBORDER
+      if (this.xposCar >= ROADLEFTBORDER + ROADWIDTH-CARWIDTH) this.xposCar = ROADLEFTBORDER + ROADWIDTH-CARWIDTH
 
       if (this.yposCar <= 0 ) this.yposCar = 0
       if (this.yposCar >= ROADHEIGHT-CARHEIGHT) this.yposCar = ROADHEIGHT-CARHEIGHT
