@@ -4,7 +4,7 @@ class PoliceCar {
   constructor() {
     this.xposOtherCar = ROADLEFTBORDER + ROADWIDTH * 1/6 - OTHERCARWIDTH / 2
     this.yposOtherCar = -OTHERCARHEIGHT
-    this.velocityOtherCar = 4
+    this.velocityOtherCar = game.roadVelocity - 8
   }
   
   setup(){
@@ -48,7 +48,7 @@ class CarLaneTwo {
   constructor() {
     this.xposOtherCar = ROADLEFTBORDER + ROADWIDTH * 3/6 - OTHERCARWIDTH / 2
     this.yposOtherCar = -OTHERCARHEIGHTLONG
-    this.velocityOtherCar = 8
+    this.velocityOtherCar = game.roadVelocity - 4
   }
   
   setup(){
@@ -92,7 +92,7 @@ class Tank {
   constructor() {
     this.xposOtherCar = ROADLEFTBORDER + ROADWIDTH * 5/6 - OTHERCARWIDTH / 2
     this.yposOtherCar = -OTHERCARHEIGHT
-    this.velocityOtherCar = 5
+    this.velocityOtherCar = game.roadVelocity - 2
   }
   
   setup(){

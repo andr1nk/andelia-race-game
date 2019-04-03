@@ -11,10 +11,19 @@ class Mycar {
     this.myCarImg = loadImage(
       "../assets/car.png"
     )
+
+    this.honk = new Audio("../assets/Cartoon - Honk.mp3")
+
   }
+  
 
   draw() {
     //console.log("car is drawn")
+
+    //honk
+    if (keyIsDown(65)) {
+      this.honk.play()
+    }
 
     // move car
 

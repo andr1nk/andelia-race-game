@@ -15,7 +15,6 @@ class Game {
     this.roadVelocity = 12;
 
     //road side
-    // this.sideObject = new SideObject1();
 
     this.sideObjects = [];
     this.sideObject = new SideObject1();
@@ -25,10 +24,11 @@ class Game {
     this.youWon = false;
 
     //scoreboard
-    this.distanceToStuggi = 20;
+    this.distanceToStuggi = 100;
   }
 
   setup() {
+    //console.log("setup is called")
     var canvas = createCanvas(CANVASWIDTH, CANVASHEIGHT);
     frameRate(60);
     background("#222222");
@@ -112,6 +112,7 @@ class Game {
   }
 
   draw() {
+    console.log("draw is called")
     clear();
     
     // road color
