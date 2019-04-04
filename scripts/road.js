@@ -2,6 +2,7 @@
 
 class Game {
   constructor() {
+
     //cars
     this.car = new Mycar();
     this.otherCars = [];
@@ -31,7 +32,6 @@ class Game {
   }
 
   setup() {
-    //console.log("setup is called")
     var canvas = createCanvas(CANVASWIDTH, CANVASHEIGHT);
     frameRate(60);
     background("#222222");
@@ -46,10 +46,10 @@ class Game {
 
   setSpawnIntervalCars() {
     this.spawnIntervalCars = setInterval(
-      function() {
+      function () {
         let carPushRandomizer = Math.random();
-                  if (carPushRandomizer < 0.2) {
-this.otherCars.push(new PoliceCar());
+        if (carPushRandomizer < 0.2) {
+          this.otherCars.push(new PoliceCar());
           //console.log("POLICE pushed to other cars Array")
         } else if (carPushRandomizer >= 0.2 && carPushRandomizer < 0.4) {
           this.otherCars.push(new CarLaneTwo());
@@ -66,7 +66,7 @@ this.otherCars.push(new PoliceCar());
         }
 
         this.otherCars.forEach(car => car.setup());
-        this.otherCars = this.otherCars.filter(car => (car.yposOtherCar >= -OTHERCARHEIGHTLONG) && (car.yposOtherCar <= ROADHEIGHT + OTHERCARHEIGHTLONG) )
+        this.otherCars = this.otherCars.filter(car => (car.yposOtherCar >= -OTHERCARHEIGHTLONG) && (car.yposOtherCar <= ROADHEIGHT + OTHERCARHEIGHTLONG))
       }.bind(this),
       1500
     );
@@ -74,7 +74,7 @@ this.otherCars.push(new PoliceCar());
 
   setSpawnIntervalObjects() {
     this.spawnIntervalObjects = setInterval(
-      function() {
+      function () {
         let objectPushRandomizer = Math.random();
         if (objectPushRandomizer < 0.2) {
           this.sideObjects.push(new SideObject1());
@@ -97,17 +97,18 @@ this.otherCars.push(new PoliceCar());
 
   setScoreInterval() {
     this.scoreInterval = setInterval(
-      function() {
+      function () {
         this.distanceToStuggi--;
         if (this.distanceToStuggi == 0) {
           this.won();
         }
         document.getElementById("distanceLeftToStuggi").innerHTML = `${
           this.distanceToStuggi
-        } km`;
+          } km`;
       }.bind(this),
       1000
     );
+
   }
 
   draw() {
@@ -115,7 +116,7 @@ this.otherCars.push(new PoliceCar());
     // console.log("Object Array length is: " + this.sideObjects.length)
     // console.log("Is there a Lama in the Object Array? " + this.thereIsLama)
     clear();
-    
+
     // road color
     background("#222222");
 
@@ -141,11 +142,11 @@ this.otherCars.push(new PoliceCar());
 
     // left side
     fill("green")
-    rect(-1, -1, ROADLEFTBORDER, ROADHEIGHT+1)
+    rect(-1, -1, ROADLEFTBORDER, ROADHEIGHT + 1)
 
     // right side
     fill("green")
-    rect(ROADLEFTBORDER + ROADWIDTH-1, -1, CANVASWIDTH-ROADLEFTBORDER-ROADWIDTH+1, ROADHEIGHT+1)
+    rect(ROADLEFTBORDER + ROADWIDTH - 1, -1, CANVASWIDTH - ROADLEFTBORDER - ROADWIDTH + 1, ROADHEIGHT + 1)
 
     // draw sideobject
     this.sideObjects.forEach(sideObject => sideObject.draw())
@@ -156,7 +157,7 @@ this.otherCars.push(new PoliceCar());
     } else {
       this.thereIsLama = false
     }
-    
+
 
     //game over condition
     if (this.youLost) {
@@ -194,11 +195,11 @@ this.otherCars.push(new PoliceCar());
       console.log(this.car.honkTrue)
       document.getElementById("lama-score").innerHTML = `${
         this.lamaScore
-      } Lama <3`;
+        } Lama <3`;
     }
   }
 
-  
+
 
   lost() {
     this.youLost = true;
