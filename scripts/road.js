@@ -2,7 +2,19 @@
 
 class Game {
   constructor() {
+  }
 
+  setup() {
+    var canvas = createCanvas(CANVASWIDTH, CANVASHEIGHT);
+    frameRate(60);
+    background("#222222");
+    canvas.parent("sketch-holder");
+
+    this.restart()
+  }
+
+  restart() {
+    console.log("restart is called")
     //cars
     this.car = new Mycar();
     this.otherCars = [];
@@ -25,16 +37,9 @@ class Game {
     this.youWon = false;
 
     //scoreboard
-    this.distanceToStuggi = 5;
+    this.distanceToStuggi = 100;
     this.thereIsLama = false;
     this.lamaScore = 0;
-  }
-
-  setup() {
-    var canvas = createCanvas(CANVASWIDTH, CANVASHEIGHT);
-    frameRate(60);
-    background("#222222");
-    canvas.parent("sketch-holder");
 
     this.car.setup();
 
@@ -93,13 +98,6 @@ class Game {
     );
   }
 
-  // startScoreInterval() {
-  //   if (gameStart === true) {
-  //     setScoreInterval()
-  //     console.log("gamestart is "+ gameStart)
-  //   }
-  // }
-
   setScoreInterval() {
     console.log("scoreInterval is called")
     this.scoreInterval = setInterval(
@@ -108,7 +106,7 @@ class Game {
         if (this.distanceToStuggi == 0) {
           this.won();
         }
-        document.getElementById("distanceLeftToStuggi").innerHTML = `${
+        document.getElementById("distance-left-to-stuggi").innerHTML = `${
           this.distanceToStuggi
           } km`;
       }.bind(this),
@@ -168,16 +166,20 @@ class Game {
 
     //game over condition
     if (this.youLost) {
+      createRestartButton()
       textSize(40);
       fill("red");
       textFont("Arial");
+      background ("white");
       textAlign(CENTER);
       text("You Crashed, silly!", ROADLEFTBORDER + ROADWIDTH / 2, ROADHEIGHT / 2 - 40);
       text("Game Over", ROADLEFTBORDER + ROADWIDTH / 2, ROADHEIGHT / 2);
     } else if (this.youWon) {
+      createRestartButton()
       textSize(40);
       fill("red");
       textFont("Arial");
+      background ("white");
       textAlign(CENTER);
       text("You made it to Stuggi", ROADLEFTBORDER + ROADWIDTH / 2, ROADHEIGHT / 2 - 40);
       text("You Toller Hecht, you!", ROADLEFTBORDER + ROADWIDTH / 2, ROADHEIGHT / 2);
@@ -208,11 +210,15 @@ class Game {
 
   lost() {
     this.youLost = true;
+    clearInterval(this.spawnIntervalCars);
+    clearInterval(this.spawnIntervalObjects);
     clearInterval(this.scoreInterval);
   }
-
+  
   won() {
     this.youWon = true;
+    clearInterval(this.spawnIntervalCars);
+    clearInterval(this.spawnIntervalObjects);
     clearInterval(this.scoreInterval);
   }
 }

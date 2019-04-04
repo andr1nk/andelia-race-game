@@ -39,6 +39,18 @@ body {
   flex-direction: column;
 }
 
+#lama-score {
+  color: red;
+  font-size: 30px;
+  margin-top: 5px;
+}
+
+#distance-left-to-stuggi {
+  color: red;
+  font-size: 30px;
+  margin-top: 5px;
+}
+
 .scoreboard h2 {
   font-size: 20px;
   color: black;
@@ -51,7 +63,8 @@ body {
   background-color: green;
   display: flex;
   justify-content: center;
-  align-items: stretch;
+  align-items: center;
+
 }
 
 .start-screen-container {
@@ -83,6 +96,8 @@ body {
 .start-screen-description {
   color: red;
   font-family: Arial, Helvetica, sans-serif;
+  width: 400px;
+  text-align: center;
   font-size: 20px;
   margin: 10px;
 }
@@ -91,4 +106,9 @@ body {
   margin-top: 20px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 1.5em;
+}
+
+#restart-button {
+  position: absolute;
+  margin-top: 50px;
 }
