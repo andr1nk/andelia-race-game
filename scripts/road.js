@@ -7,6 +7,8 @@ class Game {
   setup() {
     var canvas = createCanvas(CANVASWIDTH, CANVASHEIGHT);
     frameRate(60);
+    this.lamaSound = new Audio("../assets/huh.mp3")
+    this.backgroundMusic = new Audio("../assets/brazil-backgroundM.mp3")
     background("#222222");
     canvas.parent("sketch-holder");
 
@@ -40,6 +42,8 @@ class Game {
     this.distanceToStuggi = 100;
     this.thereIsLama = false;
     this.lamaScore = 0;
+
+    this.backgroundmusic()
 
     this.car.setup();
 
@@ -170,7 +174,7 @@ class Game {
       textSize(40);
       fill("red");
       textFont("Arial");
-      background ("white");
+      background("white");
       textAlign(CENTER);
       text("You Crashed, silly!", ROADLEFTBORDER + ROADWIDTH / 2, ROADHEIGHT / 2 - 40);
       text("Game Over", ROADLEFTBORDER + ROADWIDTH / 2, ROADHEIGHT / 2);
@@ -179,7 +183,7 @@ class Game {
       textSize(40);
       fill("red");
       textFont("Arial");
-      background ("white");
+      background("white");
       textAlign(CENTER);
       text("You made it to Stuggi", ROADLEFTBORDER + ROADWIDTH / 2, ROADHEIGHT / 2 - 40);
       text("You Toller Hecht, you!", ROADLEFTBORDER + ROADWIDTH / 2, ROADHEIGHT / 2);
@@ -192,21 +196,28 @@ class Game {
         car.checkCollision();
       });
 
-      // lamascore
-      if (this.thereIsLama === true && this.car.honkTrue === true) {
-        this.lamaScore += 1
-      } else if (this.thereIsLama === false && this.car.honkTrue === true) {
-        this.lamaScore -= 1
-      } else {
-        this.lamaScore += 0
-      }
-      document.getElementById("lama-score").innerHTML = `${
-        this.lamaScore
-        } Lama <3`;
     }
+
+    // lamasound
+    if (this.thereIsLama === true) this.lamaSound.play()
+
+    // lamascore
+    if (this.thereIsLama === true && this.car.honkTrue === true) {
+      this.lamaScore += 1
+    } else if (this.thereIsLama === false && this.car.honkTrue === true) {
+      this.lamaScore -= 1
+    } else {
+      this.lamaScore += 0
+    }
+    document.getElementById("lama-score").innerHTML = `${
+      this.lamaScore
+      } Lama <3`;
   }
 
 
+  backgroundmusic () {
+    this.backgroundMusic.play()
+  }
 
   lost() {
     this.youLost = true;
@@ -214,7 +225,7 @@ class Game {
     clearInterval(this.spawnIntervalObjects);
     clearInterval(this.scoreInterval);
   }
-  
+
   won() {
     this.youWon = true;
     clearInterval(this.spawnIntervalCars);
