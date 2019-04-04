@@ -25,8 +25,7 @@ class Game {
     this.youWon = false;
 
     //scoreboard
-    this.distanceToStuggi = 100;
-
+    this.distanceToStuggi = 5;
     this.thereIsLama = false;
     this.lamaScore = 0;
   }
@@ -41,7 +40,6 @@ class Game {
 
     this.setSpawnIntervalCars();
     this.setSpawnIntervalObjects();
-    this.setScoreInterval();
   }
 
   setSpawnIntervalCars() {
@@ -95,7 +93,15 @@ class Game {
     );
   }
 
+  // startScoreInterval() {
+  //   if (gameStart === true) {
+  //     setScoreInterval()
+  //     console.log("gamestart is "+ gameStart)
+  //   }
+  // }
+
   setScoreInterval() {
+    console.log("scoreInterval is called")
     this.scoreInterval = setInterval(
       function () {
         this.distanceToStuggi--;
@@ -108,6 +114,7 @@ class Game {
       }.bind(this),
       1000
     );
+
 
   }
 
@@ -191,8 +198,6 @@ class Game {
       } else {
         this.lamaScore += 0
       }
-      console.log(this.thereIsLama)
-      console.log(this.car.honkTrue)
       document.getElementById("lama-score").innerHTML = `${
         this.lamaScore
         } Lama <3`;

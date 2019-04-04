@@ -19,7 +19,6 @@ class Mycar {
   
 
   draw() {
-    //console.log("car is drawn")
 
     //honk
     if (keyIsDown(65)) {
