@@ -39,7 +39,7 @@ class Game {
     this.thereIsLama = false;
     this.lamaScore = 0;
 
-    this.backgroundMusic = new Audio("../assets/brazil-backgroundm.mp3")
+    this.backgroundMusic = new Audio("../assets/brazilbackgroundm.mp3")
     this.lamaSound = new Audio("../assets/huh.mp3")
     this.backgroundmusic()
 
