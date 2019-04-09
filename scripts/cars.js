@@ -1,5 +1,7 @@
 /* eslint-disable */
 
+
+
 class PoliceCar {
   constructor() {
     this.xposOtherCar = ROADLEFTBORDER + ROADWIDTH * 1/6 - OTHERCARWIDTH / 2
@@ -9,7 +11,7 @@ class PoliceCar {
   
   setup(){
     this.policeCarImg = loadImage(
-      "../assets/police-car.png"
+      "../assets/policecar.png"
     )
   }
 

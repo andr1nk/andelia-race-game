@@ -15,7 +15,7 @@ function createRestartButton() {
         console.log("button is called")
         document.getElementById("screen").removeChild(document.getElementById("restart-button"))
         gameStart = !gameStart
-        game.restart()
+        game.start()
         game.setScoreInterval()
     })
 }

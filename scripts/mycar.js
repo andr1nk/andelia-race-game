@@ -13,7 +13,7 @@ class Mycar {
       "../assets/car.png"
     )
 
-    this.honk = new Audio("../assets/Cartoon - Honk.mp3")
+    this.honk = new Audio("../assets/honk.mp3")
 
   }
   

@@ -7,15 +7,13 @@ class Game {
   setup() {
     var canvas = createCanvas(CANVASWIDTH, CANVASHEIGHT);
     frameRate(60);
-    this.lamaSound = new Audio("../assets/huh.mp3")
-    this.backgroundMusic = new Audio("../assets/brazil-backgroundM.mp3")
     background("#222222");
     canvas.parent("sketch-holder");
 
-    this.restart()
+    this.start()
   }
 
-  restart() {
+  start() {
     console.log("restart is called")
     //cars
     this.car = new Mycar();
@@ -30,9 +28,7 @@ class Game {
     this.roadVelocity = 10;
 
     //road side
-
     this.sideObjects = [];
-    this.sideObject = new SideObject1();
 
     // game over
     this.youLost = false;
@@ -43,6 +39,8 @@ class Game {
     this.thereIsLama = false;
     this.lamaScore = 0;
 
+    this.backgroundMusic = new Audio("../assets/brazil-backgroundm.mp3")
+    this.lamaSound = new Audio("../assets/huh.mp3")
     this.backgroundmusic()
 
     this.car.setup();
@@ -84,15 +82,15 @@ class Game {
       function () {
         let objectPushRandomizer = Math.random();
         if (objectPushRandomizer < 0.2) {
-          this.sideObjects.push(new SideObject1());
+          this.sideObjects.push(new SideObjectLeft1());
         } else if (objectPushRandomizer >= 0.2 && objectPushRandomizer < 0.4) {
-          this.sideObjects.push(new SideObject2());
+          this.sideObjects.push(new SideObjectLeft2());
         } else if (objectPushRandomizer >= 0.4 && objectPushRandomizer < 0.6) {
-          this.sideObjects.push(new SideObject3());
+          this.sideObjects.push(new SideObjectRight1());
         } else if (objectPushRandomizer >= 0.6 && objectPushRandomizer < 0.95) {
-          this.sideObjects.push(new SideObject4());
+          this.sideObjects.push(new SideObjectRight2());
         } else {
-          this.sideObjects.push(new SideObject5());
+          this.sideObjects.push(new Lama());
         }
 
         this.sideObjects.forEach(sideObject => sideObject.setup());
@@ -157,7 +155,7 @@ class Game {
     fill("green")
     rect(ROADLEFTBORDER + ROADWIDTH - 1, -1, CANVASWIDTH - ROADLEFTBORDER - ROADWIDTH + 1, ROADHEIGHT + 1)
 
-    // draw sideobject
+    // draw sideobjects
     this.sideObjects.forEach(sideObject => sideObject.draw())
 
     // check if there is lama on the side
@@ -167,14 +165,28 @@ class Game {
       this.thereIsLama = false
     }
 
-
+    // lama score and sound
+    if (this.thereIsLama === true) {
+      this.lamaSound.play()
+      if (this.car.honkTrue === true) {
+        this.lamaScore += 1
+      }
+    } else if (this.thereIsLama === false && this.car.honkTrue === true) {
+      this.lamaScore -= 1
+    } else {
+      this.lamaScore += 0
+    }
+    document.getElementById("lama-score").innerHTML = `${
+      this.lamaScore
+      } Lama <3`;
+    
     //game over condition
     if (this.youLost) {
       createRestartButton()
       textSize(40);
       fill("red");
       textFont("Arial");
-      background("white");
+//      background("white");
       textAlign(CENTER);
       text("You Crashed, silly!", ROADLEFTBORDER + ROADWIDTH / 2, ROADHEIGHT / 2 - 40);
       text("Game Over", ROADLEFTBORDER + ROADWIDTH / 2, ROADHEIGHT / 2);
@@ -183,7 +195,7 @@ class Game {
       textSize(40);
       fill("red");
       textFont("Arial");
-      background("white");
+//      background("white");
       textAlign(CENTER);
       text("You made it to Stuggi", ROADLEFTBORDER + ROADWIDTH / 2, ROADHEIGHT / 2 - 40);
       text("You Toller Hecht, you!", ROADLEFTBORDER + ROADWIDTH / 2, ROADHEIGHT / 2);
@@ -198,20 +210,6 @@ class Game {
 
     }
 
-    // lamasound
-    if (this.thereIsLama === true) this.lamaSound.play()
-
-    // lamascore
-    if (this.thereIsLama === true && this.car.honkTrue === true) {
-      this.lamaScore += 1
-    } else if (this.thereIsLama === false && this.car.honkTrue === true) {
-      this.lamaScore -= 1
-    } else {
-      this.lamaScore += 0
-    }
-    document.getElementById("lama-score").innerHTML = `${
-      this.lamaScore
-      } Lama <3`;
   }
 
 
