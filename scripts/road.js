@@ -39,8 +39,8 @@ class Game {
     this.thereIsLama = false;
     this.lamaScore = 0;
 
-    this.backgroundMusic = new Audio("../assets/brazilbackgroundm.mp3")
-    this.lamaSound = new Audio("../assets/huh.mp3")
+    this.backgroundMusic = new Audio("https://raw.githubusercontent.com/andr1nk/andelia-race-game/master/assets/brazilbackgroundm.mp3")
+    this.lamaSound = new Audio("https://raw.githubusercontent.com/andr1nk/andelia-race-game/master/assets/huh.mp3")
     this.backgroundmusic()
 
     this.car.setup();

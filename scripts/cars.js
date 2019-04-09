@@ -11,7 +11,7 @@ class PoliceCar {
   
   setup(){
     this.policeCarImg = loadImage(
-      "../assets/policecar.png"
+      "https://raw.githubusercontent.com/andr1nk/andelia-race-game/master/assets/policecar.png"
     )
   }
 
@@ -55,7 +55,7 @@ class CarLaneTwo {
   
   setup(){
     this.carLaneTwoImg = loadImage(
-      "../assets/limousine.png"
+      "https://raw.githubusercontent.com/andr1nk/andelia-race-game/master/assets/limousine.png"
     )
   }
 
@@ -99,7 +99,7 @@ class Tank {
   
   setup(){
     this.tankImg = loadImage(
-      "../assets/tank.png"
+      "https://raw.githubusercontent.com/andr1nk/andelia-race-game/master/assets/tank.png"
     )
   }
 
@@ -142,7 +142,7 @@ class BikeLeft {
   
   setup(){
     this.bikeImg = loadImage(
-      "../assets/bike.png"
+      "https://raw.githubusercontent.com/andr1nk/andelia-race-game/master/assets/bike.png"
     )
   }
 
@@ -184,7 +184,7 @@ class BikeRight {
   
   setup(){
     this.bikeImg = loadImage(
-      "../assets/bike.png"
+      "https://raw.githubusercontent.com/andr1nk/andelia-race-game/master/assets/bike.png"
     )
   }
 

@@ -10,7 +10,7 @@ class Lama {
   
   setup(){
     this.lama = loadImage(
-      "../assets/honklama.png"
+      "https://raw.githubusercontent.com/andr1nk/andelia-race-game/master/assets/honklama.png"
     )
   }
 
@@ -32,11 +32,11 @@ class SideObjectLeft1 {
   
   setup(){
     this.tree1 = loadImage(
-      "../assets/treeone.png"
+      "https://raw.githubusercontent.com/andr1nk/andelia-race-game/master/assets/treeone.png"
     )
 
     this.tree2 = loadImage(
-      "../assets/treetwo.png"
+      "https://raw.githubusercontent.com/andr1nk/andelia-race-game/master/assets/treetwo.png"
     )
   }
 
@@ -59,11 +59,11 @@ class SideObjectLeft2 {
   
   setup(){
     this.tree1 = loadImage(
-      "../assets/treeone.png"
+      "https://raw.githubusercontent.com/andr1nk/andelia-race-game/master/assets/treeone.png"
     )
 
     this.tree2 = loadImage(
-      "../assets/treetwo.png"
+      "https://raw.githubusercontent.com/andr1nk/andelia-race-game/master/assets/treetwo.png"
     )
   }
 
@@ -87,11 +87,11 @@ class SideObjectRight1 {
   
   setup(){
     this.tree1 = loadImage(
-      "../assets/treeone.png"
+      "https://raw.githubusercontent.com/andr1nk/andelia-race-game/master/assets/treeone.png"
     )
 
     this.tree2 = loadImage(
-      "../assets/treetwo.png"
+      "https://raw.githubusercontent.com/andr1nk/andelia-race-game/master/assets/treetwo.png"
     )
   }
 
@@ -116,11 +116,11 @@ class SideObjectRight2 {
   
   setup(){
     this.tree1 = loadImage(
-      "../assets/treeone.png"
+      "https://raw.githubusercontent.com/andr1nk/andelia-race-game/master/assets/treeone.png"
     )
 
     this.tree2 = loadImage(
-      "../assets/treetwo.png"
+      "https://raw.githubusercontent.com/andr1nk/andelia-race-game/master/assets/treetwo.png"
     )
   }
 

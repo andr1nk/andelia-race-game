@@ -10,10 +10,10 @@ class Mycar {
 
   setup() {
     this.myCarImg = loadImage(
-      "../assets/car.png"
+      "https://raw.githubusercontent.com/andr1nk/andelia-race-game/master/assets/car.png"
     )
 
-    this.honk = new Audio("../assets/honk.mp3")
+    this.honk = new Audio("https://raw.githubusercontent.com/andr1nk/andelia-race-game/master/assets/honk.mp3")
 
   }
   
