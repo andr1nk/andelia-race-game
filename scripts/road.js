@@ -92,6 +92,8 @@ class Game {
           this.sideObjects.push(new SideObjectRight2());
         } else {
           this.sideObjects.push(new Lama());
+          console.log("LAMA")
+          this.lamaSound.play()
         }
 
         this.sideObjects.forEach(sideObject => sideObject.setup());
@@ -168,7 +170,7 @@ class Game {
 
     // lama score and sound
     if (this.thereIsLama === true) {
-      this.lamaSound.play()
+      // this.lamaSound.play()
       if (this.car.honkTrue === true) {
         this.lamaScore += 1
       }
