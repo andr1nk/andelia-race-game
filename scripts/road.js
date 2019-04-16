@@ -11,6 +11,7 @@ class Game {
     canvas.parent("sketch-holder");
 
     this.start()
+    this.backgroundmusic()
   }
 
   start() {
@@ -41,8 +42,8 @@ class Game {
 
     this.backgroundMusic = new Audio("https://raw.githubusercontent.com/andr1nk/andelia-race-game/master/assets/brazilbackgroundm.mp3")
     this.lamaSound = new Audio("https://raw.githubusercontent.com/andr1nk/andelia-race-game/master/assets/huh.mp3")
-    this.backgroundmusic()
-
+    
+    
     this.car.setup();
 
     this.setSpawnIntervalCars();
@@ -211,7 +212,6 @@ class Game {
     }
 
   }
-
 
   backgroundmusic () {
     this.backgroundMusic.play()
